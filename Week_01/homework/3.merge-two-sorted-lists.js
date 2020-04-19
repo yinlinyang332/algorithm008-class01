@@ -10,19 +10,13 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var mergeTwoLists = function (l1, l2) {
-	if (l1 == null) {
-		return l2
-	}
-	if (l2 == null) {
-		return l1
-	}
-
-	if (l1.val < l2.val) {
-		l1.next = mergeTwoLists(l1.next, l2)
-		return l1
-	} else {
-		l2.next = mergeTwoLists(l1, l2.next)
-		return l2
+var merge = function (nums1, m, nums2, n) {
+	let length = m + n
+	while (n > 0) {
+		if (m <= 0) {
+			nums1[--length] = nums2[--n]
+			continue
+		}
+		nums1[--length] = nums1[m - 1] >= nums2[n - 1] ? nums1[--m] : nums2[--n]
 	}
 }
